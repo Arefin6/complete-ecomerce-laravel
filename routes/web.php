@@ -14,3 +14,38 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/cart',[
+ 
+    'uses'=>'FrontEndController@cart',
+      
+    'as'  =>'cart'
+  
+  
+  ]);
+
+  Route::get('/shop',[
+ 
+    'uses'=>'FrontEndController@shop',
+      
+    'as'  =>'shop'
+  
+  ]); 
+
+  Route::get('/checkout',[
+ 
+    'uses'=>'FrontEndController@checkout',
+      
+    'as'  =>'checkout'
+  
+  ]);
+
+  Route::get('/login/user',[
+ 
+    'uses'=>'FrontEndController@login',
+      
+    'as'  =>'login.user'
+  
+  ]); 
+
+
