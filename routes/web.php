@@ -46,6 +46,24 @@ Route::get('/cart',[
       
     'as'  =>'login.user'
   
+  ]);
+
+  //backend stuffs
+
+
+  Route::get('/admin',[
+ 
+    'uses'=>'AdminController@dashboard',
+      
+    'as'  =>'admin.dashboard'
+  
+  ]);  
+  Route::get('/category/create',[
+ 
+    'uses'=>'CategoryController@create',
+      
+    'as'  =>'category.create'
+  
   ]); 
 
 
