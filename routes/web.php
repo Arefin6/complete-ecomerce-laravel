@@ -63,7 +63,37 @@ Route::get('/cart',[
     'uses'=>'CategoryController@create',
       
     'as'  =>'category.create'
-  
-  ]); 
+  ]);
+  Route::post('/category/store',[
+ 
+    'uses'=>'CategoryController@store',
+      
+    'as'  =>'category.store'
+  ]);  
+
+  Route::get('/product/create',[
+ 
+    'uses'=>'ProductController@create',
+      
+    'as'  =>'product.create'
+  ]);
+  Route::post('/product/store',[
+ 
+    'uses'=>'ProductController@store',
+      
+    'as'  =>'product.store'
+  ]);
+  Route::get('/slider/create',[
+ 
+    'uses'=>'SlidertController@create',
+      
+    'as'  =>'slider.create'
+  ]);
+  Route::post('/slider/store',[
+ 
+    'uses'=>'SlidertController@store',
+      
+    'as'  =>'slider.store'
+  ]);
 
 

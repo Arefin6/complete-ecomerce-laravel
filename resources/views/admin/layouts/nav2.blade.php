@@ -15,8 +15,8 @@
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="{{route('category.create')}}">Add Category</a></li>
-                <li class="nav-item"><a class="nav-link" href="advanced_elements.html">Add Product</a></li>
-                <li class="nav-item"><a class="nav-link" href="validation.html">Add Slider</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('product.create')}}">Add Product</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('slider.create')}}">Add Slider</a></li>
              
               </ul>
             </div>
