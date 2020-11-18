@@ -29,10 +29,10 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="basic-table.html">Categories</a></li>
-                <li class="nav-item"> <a class="nav-link" href="data-table.html">Products</a></li>
-                <li class="nav-item"> <a class="nav-link" href="js-grid.html">Sliders</a></li>
-                <li class="nav-item"> <a class="nav-link" href="sortable-table.html">Orders</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('category.index')}}">Categories</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('product.index')}}">Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('slider.index')}}">Sliders</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('order.index')}}">Orders</a></li>
               </ul>
             </div>
           </li>

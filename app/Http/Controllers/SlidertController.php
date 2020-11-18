@@ -13,7 +13,7 @@ class SlidertController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.Silders.index');
     }
 
     /**

@@ -57,7 +57,9 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{asset('backend')}}/js/dashboard.js"></script>
+  
   <!-- End custom js for this page-->
+  <script src="{{asset('backend')}}/js/data-table.js"></script>
 </body>
 
 </html>

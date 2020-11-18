@@ -64,6 +64,13 @@ Route::get('/cart',[
       
     'as'  =>'category.create'
   ]);
+  Route::get('/categories',[
+ 
+    'uses'=>'CategoryController@index',
+      
+    'as'  =>'category.index'
+  ]);
+
   Route::post('/category/store',[
  
     'uses'=>'CategoryController@store',
@@ -77,6 +84,12 @@ Route::get('/cart',[
       
     'as'  =>'product.create'
   ]);
+  Route::get('/products',[
+ 
+    'uses'=>'ProductController@index',
+      
+    'as'  =>'product.index'
+  ]);
   Route::post('/product/store',[
  
     'uses'=>'ProductController@store',
@@ -89,11 +102,25 @@ Route::get('/cart',[
       
     'as'  =>'slider.create'
   ]);
+
+  Route::get('/sliders',[
+ 
+    'uses'=>'SlidertController@index',
+      
+    'as'  =>'slider.index'
+  ]);
   Route::post('/slider/store',[
  
     'uses'=>'SlidertController@store',
       
     'as'  =>'slider.store'
+  ]);
+
+  Route::get('/orders',[
+ 
+    'uses'=>'AdminController@orders',
+      
+    'as'  =>'order.index'
   ]);
 
 
