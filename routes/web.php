@@ -70,6 +70,26 @@ Route::get('/cart',[
       
     'as'  =>'category.index'
   ]);
+   
+  Route::post('/category/update/{id}',[
+ 
+    'uses'=>'CategoryController@update',
+      
+    'as'  =>'category.update'
+  ]);
+  Route::get('/category/edit/{id}',[
+ 
+    'uses'=>'CategoryController@edit',
+      
+    'as'  =>'category.edit'
+  ]);
+  Route::get('/category/delete/{id}',[
+ 
+    'uses'=>'CategoryController@destroy',
+      
+    'as'  =>'category.delete'
+  ]);
+
 
   Route::post('/category/store',[
  
