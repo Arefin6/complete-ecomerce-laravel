@@ -147,11 +147,29 @@ Route::get('/cart',[
       
     'as'  =>'slider.index'
   ]);
+  Route::get('/slider/edit/{id}',[
+ 
+    'uses'=>'SlidertController@edit',
+      
+    'as'  =>'slider.edit'
+  ]);
+  Route::get('/slider/delete/{id}',[
+ 
+    'uses'=>'SlidertController@destroy',
+      
+    'as'  =>'slider.delete'
+  ]);
   Route::post('/slider/store',[
  
     'uses'=>'SlidertController@store',
       
     'as'  =>'slider.store'
+  ]);
+  Route::post('/slider/update/{id}',[
+ 
+    'uses'=>'SlidertController@update',
+      
+    'as'  =>'slider.update'
   ]);
 
   Route::get('/orders',[
