@@ -110,11 +110,29 @@ Route::get('/cart',[
       
     'as'  =>'product.index'
   ]);
+  Route::get('/product/edit/{id}',[
+ 
+    'uses'=>'ProductController@edit',
+      
+    'as'  =>'product.edit'
+  ]);
   Route::post('/product/store',[
  
     'uses'=>'ProductController@store',
       
     'as'  =>'product.store'
+  ]);
+  Route::post('/product/update/{id}',[
+ 
+    'uses'=>'ProductController@update',
+      
+    'as'  =>'product.update'
+  ]);
+  Route::get('/product/delete/{id}',[
+ 
+    'uses'=>'ProductController@destroy',
+      
+    'as'  =>'product.delete'
   ]);
   Route::get('/slider/create',[
  

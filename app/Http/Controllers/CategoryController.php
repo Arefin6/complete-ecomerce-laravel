@@ -110,6 +110,11 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
+
+        foreach($category->products as $post){
+			
+			$post->delete();
+		}
         $category->delete();
 
         Session::flash('success','You successfully deleted the category');
