@@ -11,11 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[
+ 
+  'uses'=>'FrontEndController@home',
+    
+  'as'  =>'home'
 
-Route::get('/cart',[
+
+]);
+
+ Route::get('/cart',[
  
     'uses'=>'FrontEndController@cart',
       
@@ -31,6 +36,14 @@ Route::get('/cart',[
     'as'  =>'shop'
   
   ]); 
+
+  Route::get('/view/{id}',[
+ 
+    'uses'=>'FrontEndController@viewBYCat',
+      
+    'as'  =>'view.category'
+  
+  ]);
 
   Route::get('/checkout',[
  
