@@ -22,9 +22,27 @@ Route::get('/',[
 
  Route::get('/cart',[
  
-    'uses'=>'FrontEndController@cart',
+    'uses'=>'CartController@cart',
       
     'as'  =>'cart'
+  
+  
+  ]);
+
+  Route::post('/cart/update',[
+ 
+    'uses'=>'CartController@updateCart',
+      
+    'as'  =>'cart.update'
+  
+  
+  ]);
+
+  Route::get('/cart/remove/{id}',[
+ 
+    'uses'=>'CartController@removeFromCart',
+      
+    'as'  =>'cart.remove'
   
   
   ]);
@@ -58,6 +76,14 @@ Route::get('/',[
     'uses'=>'FrontEndController@login',
       
     'as'  =>'login.user'
+  
+  ]);
+
+  Route::get('/cat/add/{id}',[
+ 
+    'uses'=>'CartController@addToCart',
+      
+    'as'  =>'cart.add'
   
   ]);
 

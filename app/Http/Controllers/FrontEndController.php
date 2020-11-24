@@ -23,9 +23,7 @@ class FrontEndController extends Controller
 
    }
 
-   public function cart(){
-       return view('cart');
-   }
+   
    public function shop(){
     $products  = Product::all();
     $categories  = Category::all();

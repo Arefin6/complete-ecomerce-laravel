@@ -10,7 +10,7 @@
 			  <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
 			  <li class="nav-item active"><a href="{{route('shop')}}" class="nav-link">shop</a></li>
 	          
-	          <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	          <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>{{Session::has('cart') ? Session::get('cart')->totalQty : 0}}</a></li>
 
 	        </ul>
 	      </div>
