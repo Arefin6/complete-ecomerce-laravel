@@ -46,6 +46,15 @@ Route::get('/',[
   
   
   ]);
+   
+  
+  Route::post('/checkout/store',[
+ 
+    'uses'=>'FrontEndController@storeCheckout',
+      
+    'as'  =>'checkout.store'
+  
+  ]); 
 
   Route::get('/shop',[
  

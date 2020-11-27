@@ -113,11 +113,15 @@
 							   @endforeach 
 							  <!-- END TR-->
 							  
-							  @else
-							  <h3>No Products in Cart</h3>
-							  @endif
-						    </tbody>
+							</tbody>
+							
 						  </table>
+						  @else
+							  <h3 class="text-center text-danger ">No Products in Cart</h3>
+							  @if(Session::has('success'))
+						    <div class="alert alert-success">{{Session::get('success')}}</div>
+						     @endif
+							@endif
 					  </div>
     			</div>
     		</div>
@@ -173,11 +177,11 @@
     					</p>
     					<hr>
     					<p class="d-flex total-price">
-    						<span>Total</span>
-    						<span>$17.60</span>
+							<span>Total</span>
+    						<span>${{Session::has('cart') ? Session::get('cart')->totalPrice : 0}}</span>
     					</p>
     				</div>
-    				<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+    				<p><a href="{{route('checkout')}}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
     			</div>
     		</div>
 			</div>

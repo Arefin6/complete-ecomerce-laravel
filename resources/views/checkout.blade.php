@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Vegefoods Store</title>
+ <head>
+    <title>Vegefoods  Store</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('frontend')}}/{{asset('frontend')}}/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('frontend')}}/css/animate.css">
     
     <link rel="stylesheet" href="{{asset('frontend')}}/css/owl.carousel.min.css">
@@ -50,28 +50,10 @@
 		    </div>
 		  </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Vegefoods</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-			  <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-			  <li class="nav-item active"><a href="shop.html" class="nav-link">shop</a></li>
-	          
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
-
-	        </ul>
-		  </div>
-		  
-	    </div>
-	  </nav>
+    @include('includes.navbar')
     <!-- END nav -->
 
-    <div class="hero-wrap hero-bread" style="background-image:url({{asset('frontend')}}/images/bg_1.jpg);">
+    <div class="hero-wrap hero-bread" style="background-image: url('{{asset('frontend')}}/images/bg_1.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
@@ -82,90 +64,75 @@
       </div>
     </div>
 
+    
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
-						<form action="#" class="billing-form">
-							<h3 class="mb-4 billing-heading">Billing Details</h3>
+				<form action="{{route('checkout.store')}}"  id="checkout-form" method="POST" class="billing-form">
+						{{csrf_field()}}	
+						<h3 class="mb-4 billing-heading">Billing Details</h3>
+						@if(Session::has('error'))
+						    <div class="alert alert-danger">{{Session::get('error')}} {{Session::put('error',null)}}</div>
+						@endif
 	          	<div class="row align-items-end">
-	          		<div class="col-md-6">
+	          		<div class="col-md-12">
 	                <div class="form-group">
-	                	<label for="firstname">Firt Name</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                	<label for="name">Full Name</label>
+	                  <input type="text" name="name" class="form-control" placeholder="name">
 	                </div>
 	              </div>
-	              <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="lastname">Last Name</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
+	              
                 <div class="w-100"></div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
-		            		<label for="country">State / Country</label>
-		            		<div class="select-wrap">
-		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                  <select name="" id="" class="form-control">
-		                  	<option value="">France</option>
-		                    <option value="">Italy</option>
-		                    <option value="">Philippines</option>
-		                    <option value="">South Korea</option>
-		                    <option value="">Hongkong</option>
-		                    <option value="">Japan</option>
-		                  </select>
-		                </div>
+		            		<label for="address">Address</label>
+							<input type="text" name="address" class="form-control" placeholder="Address">
+		                 
 		            	</div>
 		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
+		            
+		            
+					<div class="w-100"></div>
+		            <div class="col-md-12">
 		            	<div class="form-group">
-	                	<label for="streetaddress">Street Address</label>
-	                  <input type="text" class="form-control" placeholder="House number and street name">
-	                </div>
-		            </div>
-		            <div class="col-md-6">
+		            		<label for="card-name">Name On Card</label>
+							<input id="card-name" type="text" name="NameOnCard" class="form-control" placeholder="Name On Card">
+		                 
+		            	</div>
+					</div>
+					
+					<div class="w-100"></div>
+		            <div class="col-md-12">
 		            	<div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
-	                </div>
+		            		<label for="card-number">Card Number</label>
+							<input id="card-number" type="text" name="card-number" class="form-control" placeholder="card-number">
+		                 
+		            	</div>
 		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                	<label for="towncity">Town / City</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-		            		<label for="postcodezip">Postcode / ZIP *</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
+		            
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="phone">Phone</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                	<label for="card-expiry-month">Exp Month</label>
+	                  <input  id ="card-expiry-month" type="text" name="expMonth" class="form-control" placeholder="exp-month">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="emailaddress">Email Address</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                	<label for="card-expiry-year">Exp Year</label>
+	                  <input  id ="card-expiry-year" type="text" name="exp-Year" class="form-control" placeholder="exp-Year">
 	                </div>
                 </div>
                 <div class="w-100"></div>
                 <div class="col-md-12">
-                	<div class="form-group mt-4">
-										<div class="radio">
-										  <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
-										  <label><input type="radio" name="optradio"> Ship to different address</label>
-										</div>
-									</div>
-                </div>
-	            </div>
+                	<div class="form-group">
+					<label for="card-cvc">CVC</label>
+	                  <input  id="card-cvc" type="text" name="CVC" class="form-control" placeholder="CVC">				
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Place Order</button>
+	        </div>
 	          </form><!-- END -->
 					</div>
 					<div class="col-xl-5">
@@ -188,44 +155,11 @@
 		    					<hr>
 		    					<p class="d-flex total-price">
 		    						<span>Total</span>
-		    						<span>$17.60</span>
+		    						<span>${{Session::get('cart')->totalPrice}}</span>
 		    					</p>
 								</div>
 	          	</div>
-	          	<div class="col-md-12">
-	          		<div class="cart-detail p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Payment Method</h3>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="checkbox">
-											   <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
-											</div>
-										</div>
-									</div>
-									<p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
-								</div>
-	          	</div>
+	          	
 	          </div>
           </div> <!-- .col-md-8 -->
         </div>
@@ -326,63 +260,72 @@
     
   
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+	
 
-  <script src="{{asset('frontend')}}/js/jquery.min.js"></script>
-  <script src="{{asset('frontend')}}/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="{{asset('frontend')}}/js/popper.min.js"></script>
-  <script src="{{asset('frontend')}}/js/bootstrap.min.js"></script>
-  <script src="{{asset('frontend')}}/js/jquery.easing.1.3.js"></script>
-  <script src="{{asset('frontend')}}/js/jquery.waypoints.min.js"></script>
-  <script src="{{asset('frontend')}}/js/jquery.stellar.min.js"></script>
-  <script src="{{asset('frontend')}}/js/owl.carousel.min.js"></script>
-  <script src="{{asset('frontend')}}/js/jquery.magnific-popup.min.js"></script>
-  <script src="{{asset('frontend')}}/js/aos.js"></script>
-  <script src="{{asset('frontend')}}/js/jquery.animateNumber.min.js"></script>
-  <script src="{{asset('frontend')}}/js/bootstrap-datepicker.js"></script>
-  <script src="{{asset('frontend')}}/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{{asset('frontend')}}/js/google-map.js"></script>
-  <script src="{{asset('frontend')}}/js/main.js"></script>
+<script src="https://js.stripe.com/v2/"></script>
 
-  <script>
-		$(document).ready(function(){
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
 
-		var quantitiy=0;
-		   $('.quantity-right-plus').click(function(e){
-		        
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		            
-		            $('#quantity').val(quantity + 1);
+<script src="src/js/checkout.js"></script>
 
-		          
-		            // Increment
-		        
-		    });
+<script src="{{asset('frontend')}}/js/jquery.min.js"></script>
+<script src="{{asset('frontend')}}/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="{{asset('frontend')}}/js/popper.min.js"></script>
+<script src="{{asset('frontend')}}/js/bootstrap.min.js"></script>
+<script src="{{asset('frontend')}}/js/jquery.easing.1.3.js"></script>
+<script src="{{asset('frontend')}}/js/jquery.waypoints.min.js"></script>
+<script src="{{asset('frontend')}}/js/jquery.stellar.min.js"></script>
+<script src="{{asset('frontend')}}/js/owl.carousel.min.js"></script>
+<script src="{{asset('frontend')}}/js/jquery.magnific-popup.min.js"></script>
+<script src="{{asset('frontend')}}/js/aos.js"></script>
+<script src="{{asset('frontend')}}/js/jquery.animateNumber.min.js"></script>
+<script src="{{asset('frontend')}}/js/bootstrap-datepicker.js"></script>
+<script src="{{asset('frontend')}}/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{{asset('frontend')}}/js/google-map.js"></script>
+<script src="{{asset('frontend')}}/js/main.js"></script>
 
-		     $('.quantity-left-minus').click(function(e){
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		      
-		            // Increment
-		            if(quantity>0){
-		            $('#quantity').val(quantity - 1);
-		            }
-		    });
-		    
-		});
-	</script>
+<script>
+	  $(document).ready(function(){
+
+	  var quantitiy=0;
+		 $('.quantity-right-plus').click(function(e){
+			  
+			  // Stop acting like a button
+			  e.preventDefault();
+			  // Get the field name
+			  var quantity = parseInt($('#quantity').val());
+			  
+			  // If is not undefined
+				  
+				  $('#quantity').val(quantity + 1);
+
+				
+				  // Increment
+			  
+		  });
+
+		   $('.quantity-left-minus').click(function(e){
+			  // Stop acting like a button
+			  e.preventDefault();
+			  // Get the field name
+			  var quantity = parseInt($('#quantity').val());
+			  
+			  // If is not undefined
+			
+				  // Increment
+				  if(quantity>0){
+				  $('#quantity').val(quantity - 1);
+				  }
+		  });
+		  
+	  });
+  </script>
     
   </body>
 </html>
