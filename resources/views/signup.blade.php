@@ -26,31 +26,34 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('login')}}/css/util.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('login')}}/css/main.css">
 <!--===============================================================================================-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 </head>
 <body>
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image:url({{asset('login')}}/images/bg-01.jpg);">
 			<div class="wrap-login100">
-			     
-			@if(Session::has('info'))
-                  <div class="alert alert-danger">{{Session::get('info')}}</div>
+              @if(Session::has('success'))
+                  <div class="alert alert-success">{{Session::get('success')}}</div>
               @endif
 
-			  @include('admin.layouts.errors')
-				<form action="{{route('client.accessAccount')}}" method ="post" class="login100-form validate-form">
-				{{ csrf_field() }} 
+              @include('admin.layouts.errors')
+           
+				<form   enctype="multipart/form-data"  action="{{route('client.createAccount')}}" method ="post" class="login100-form validate-form">
+                {{ csrf_field() }} 
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Sign Up
 					</span>
+                    
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="email" name="email" placeholder="Email">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -67,13 +70,13 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+							Sign Up
 						</button>
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt1" href="{{route('signup.user')}}">
-					     Don't Have An Account?SignUp
+						<a class="txt1" href="{{route('login.user')}}">
+							 Have An Account?Login
 						</a>
 					</div>
 				</form>
@@ -100,6 +103,15 @@
 	<script src="{{asset('login')}}/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('login')}}/js/main.js"></script>
+    <script>
+        @if(Session::has('success'))
+            toastr.success("{{ Session::get('success') }}")
+        @endif
+
+        @if(Session::has('info'))
+            toastr.info("{{ Session::get('info') }}")
+        @endif
+    </script> 
 
 </body>
 </html>

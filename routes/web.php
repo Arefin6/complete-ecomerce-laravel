@@ -87,6 +87,28 @@ Route::get('/',[
     'as'  =>'login.user'
   
   ]);
+  Route::get('/signup/user',[
+ 
+    'uses'=>'FrontEndController@signup',
+      
+    'as'  =>'signup.user'
+  
+  ]);
+  Route::post('/client/createAccount',[
+ 
+    'uses'=>'AdminController@createAccount',
+      
+    'as'  =>'client.createAccount'
+    
+    
+  ]);
+  Route::post('/client/accessAccount',[
+ 
+    'uses'=>'AdminController@accessAccount',
+      
+    'as'  =>'client.accessAccount'
+  
+  ]);
 
   Route::get('/cat/add/{id}',[
  
