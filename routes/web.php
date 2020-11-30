@@ -227,4 +227,11 @@ Route::get('/',[
     'as'  =>'order.index'
   ]);
 
+  Route::get('/view/pdf/{id}',[
+ 
+    'uses'=>'pdfController@viewPdf',
+      
+    'as'  =>'view.pdf'
+  ]);
+
 

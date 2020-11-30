@@ -18,6 +18,8 @@ use App\Cart;
 
 use Session;
 
+use App\Order;
+
 class FrontEndController extends Controller
 {
    
@@ -86,7 +88,17 @@ class FrontEndController extends Controller
                 "description" => "Test Charge"
             ));
 
-          
+            $order = new Order;
+
+            $order->name = $request->name;
+
+            $order->address = $request->address;
+
+            $order->cart = serialize($cart);
+
+            $order->payment_id = $charge->id;
+    
+            $order->save();
 
         } catch(\Exception $e){
             Session::put('error', $e->getMessage());
