@@ -17,10 +17,7 @@ use Session;
 class AdminController extends Controller
 {
     
-    public function dashboard(){
-
-        return view('admin.dashboard');
-    }
+ 
 
     public function createAccount(Request $request){
           
@@ -87,5 +84,12 @@ class AdminController extends Controller
         });
 
         return view('admin.Orders.index')->with('orders',$orders);
+    }
+
+    public function logout(){
+
+        Session::forget('client');
+
+        return redirect()->back();
     }
 }

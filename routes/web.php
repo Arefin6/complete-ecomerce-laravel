@@ -80,7 +80,7 @@ Route::get('/',[
   
   ]);
 
-  Route::get('/login/user',[
+  Route::get('/user/signin',[
  
     'uses'=>'FrontEndController@login',
       
@@ -102,6 +102,14 @@ Route::get('/',[
     
     
   ]);
+  Route::get('/user/logout',[
+ 
+    'uses'=>'AdminController@logout',
+      
+    'as'  =>'logout.user'
+    
+    
+  ]);
   Route::post('/client/accessAccount',[
  
     'uses'=>'AdminController@accessAccount',
@@ -119,15 +127,15 @@ Route::get('/',[
   ]);
 
   //backend stuffs
-
-
-  Route::get('/admin',[
  
-    'uses'=>'AdminController@dashboard',
-      
-    'as'  =>'admin.dashboard'
-  
-  ]);  
+
+  Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
+  {
+
+    Route::get('/home', [
+      'uses' => 'HomeController@index',
+      'as' => 'home'
+  ]);
   Route::get('/category/create',[
  
     'uses'=>'CategoryController@create',
@@ -254,6 +262,8 @@ Route::get('/',[
     'uses'=>'pdfController@viewPdf',
       
     'as'  =>'view.pdf'
-  ]);
+   ]);
 
+  });
 
+   Auth::routes();

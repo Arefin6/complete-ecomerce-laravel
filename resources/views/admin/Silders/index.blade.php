@@ -37,7 +37,7 @@
                                {{ $slider->description_2}}
                            </td>
                            <td>
-                               <img src="{{$slider->image}}" alt="" width="600px">
+                               <img src="{{asset($slider->image)}}" alt="" width="600px">
                             </td>
                            <td>
                                <a href="{{ route('slider.edit', ['id' => $slider->id ]) }}" class="btn  btn-info">

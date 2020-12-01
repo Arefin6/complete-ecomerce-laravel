@@ -56,6 +56,11 @@ class FrontEndController extends Controller
    }
 
    public function checkout(){
+    
+    if(!Session::has('client')){
+
+      return redirect()->route('login.user');
+   }
 
     if(!Session::has('cart')){
 
